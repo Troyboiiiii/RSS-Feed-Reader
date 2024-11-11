@@ -1,8 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "RSS Feed Reader";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Enter RSS Feed URL</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div style="color: red;">@ViewBag.Error</div>
+}
+
+<form method="post" action="/Home/Index">
+    <label for="rssUrl">RSS Feed URL:</label>
+    <input type="text" id="rssUrl" name="rssUrl" placeholder="Enter RSS feed URL" required />
+    <button type="submit">Fetch Feed</button>
+</form>
